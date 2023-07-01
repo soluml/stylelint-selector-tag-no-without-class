@@ -4,9 +4,12 @@ const {
 
 testRule({
   ruleName: ruleName,
-  config: ["span"],
+  config: ["b", "/^h[0-6]$/"],
 
   accept: [
+    { code: "h1 {}" },
+    { code: "b:hover {}" },
+    { code: "span.foo, h5 {}" },
     { code: "span.foo {}" },
     { code: "div.foo {}" },
     { code: ".foo span {}" },
@@ -20,7 +23,6 @@ testRule({
   ],
 
   reject: [
-    { code: "h1 {}", message: messages.unexpected("h1"), line: 1, column: 1 },
     {
       code: "div {}",
       message: messages.unexpected("div"),
@@ -46,8 +48,8 @@ testRule({
       column: 1,
     },
     {
-      code: "span.foo, h1 {}",
-      message: messages.unexpected("h1"),
+      code: "span.foo, address {}",
+      message: messages.unexpected("address"),
       line: 1,
       column: 11,
     },

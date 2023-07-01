@@ -1,7 +1,7 @@
 {
-  "name": "stylelint-selector-tag-no-without-class",
-  "version": "2.1.0",
-  "description": "Styelint plugin to disallow certain tags without a qualifying classname in selectors",
+  "name": "stylelint-selector-no-top-level-tag",
+  "version": "1.0.0",
+  "description": "Styelint plugin to disallow tags as a top-level selector",
   "keywords": [
     "stylelint-plugin",
     "stylelint",
@@ -12,13 +12,13 @@
     "test": "jest"
   },
   "author": {
-    "name": "Moxio",
-    "email": "info@moxio.com",
-    "url": "https://www.moxio.com"
+    "name": "soluml",
+    "email": "benjamin@soluml.com",
+    "url": "https://www.soluml.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Moxio/stylelint-selector-tag-no-without-class.git"
+    "url": "https://github.com/soluml/stylelint-selector-tag-no-without-class.git"
   },
   "license": "MIT",
   "dependencies": {

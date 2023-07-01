@@ -5,10 +5,10 @@ const isStandardSyntaxSelector = require("stylelint/lib/utils/isStandardSyntaxSe
 const parseSelector = require("stylelint/lib/utils/parseSelector");
 const matchesStringOrRegExp = require("stylelint/lib/utils/matchesStringOrRegExp");
 
-const ruleName = "plugin/selector-tag-no-without-class";
+const ruleName = "plugin/selector-no-top-level-tag";
 const messages = stylelint.utils.ruleMessages(ruleName, {
   unexpected: (tagName) =>
-    `Unexpected top-level tag ${tagName} without class qualifier`,
+    `Unexpected top-level tag ${tagName} without qualifier`,
 });
 
 const rule = function (primaryOption) {
@@ -36,7 +36,7 @@ const rule = function (primaryOption) {
         (startsWith.type === "tag" &&
           _.get(flattenedSegments, "[1].type") === "pseudo")
       ) {
-        var fail = true;
+        var fail = !matchesStringOrRegExp(startsWith.value, primaryOption);
       }
 
       if (fail) {
@@ -48,31 +48,6 @@ const rule = function (primaryOption) {
           word: startsWith,
         });
       }
-
-      // combinedSegments.forEach((segment) => {
-      //   let unqualifiedTagNode;
-      //   segment.forEach((node) => {
-      //     if (
-      //       node.type === "tag" &&
-      //       matchesStringOrRegExp(node.value, primaryOption)
-      //     ) {
-      //       unqualifiedTagNode = node;
-      //     }
-      //     if (node.type === "class") {
-      //       unqualifiedTagNode = void 0;
-      //     }
-      //   });
-
-      //   if (unqualifiedTagNode) {
-      //     stylelint.utils.report({
-      //       ruleName: ruleName,
-      //       result: result,
-      //       node: ruleNode,
-      //       message: messages.unexpected(unqualifiedTagNode.value),
-      //       word: unqualifiedTagNode,
-      //     });
-      //   }
-      // });
     }
 
     function checkSelectorRoot(selectorRootNode, ruleNode) {
@@ -109,19 +84,11 @@ const rule = function (primaryOption) {
         return;
       }
 
-      console.log(`=============
-${ruleNode.toString()}
-=============`);
-
       ruleNode.selectors.forEach((selector) => {
         parseSelector(selector, result, ruleNode, (container) =>
           checkSelectorRoot(container, ruleNode)
         );
       });
-
-      console.log(`+++++++++++++
-+++++++++++++
-+++++++++++++`);
     });
   };
 };
