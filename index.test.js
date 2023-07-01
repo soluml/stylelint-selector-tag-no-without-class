@@ -12,6 +12,7 @@ testRule({
     // { code: "div.foo {}" },
 
     { code: ".foo span {}" },
+    { code: ".foo div {}" },
     { code: ".foo { > span {} }" },
     {
       code: "@media(min-width: 30em) { @media(min-width: 40em) { .foo span {} } }",
@@ -56,21 +57,15 @@ testRule({
     //   line: 1,
     //   column: 1,
     // },
-    // {
-    //   code: ".foo div {}",
-    //   message: messages.unexpected("div"),
-    //   line: 1,
-    //   column: 6,
-    // },
   ],
 });
 
-// testRule({
-//   ruleName: ruleName,
-//   config: ["/./"],
+testRule({
+  ruleName: ruleName,
+  config: ["/./"],
 
-//   accept: [
-//     // https://github.com/Moxio/stylelint-selector-tag-no-without-class/issues/5
-//     { code: "@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }" },
-//   ],
-// });
+  accept: [
+    // https://github.com/Moxio/stylelint-selector-tag-no-without-class/issues/5
+    { code: "@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }" },
+  ],
+});
