@@ -56,24 +56,24 @@ testRule({
       line: 1,
       column: 1,
     },
-    // {
-    //   code: "div::before {}",
-    //   message: messages.unexpected("div"),
-    //   line: 1,
-    //   column: 1,
-    // },
-    // {
-    //   code: "div:first-child {}",
-    //   message: messages.unexpected("div"),
-    //   line: 1,
-    //   column: 1,
-    // },
-    // {
-    //   code: "div, div.foo {}",
-    //   message: messages.unexpected("div"),
-    //   line: 1,
-    //   column: 1,
-    // },
+    {
+      code: "div::before {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
+    },
+    {
+      code: "div:first-child {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
+    },
+    {
+      code: "div, div.foo {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
+    },
   ],
 });
 
