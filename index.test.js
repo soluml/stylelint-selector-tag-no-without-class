@@ -7,8 +7,8 @@ testRule({
   config: ["span"],
 
   accept: [
-    // { code: "span.foo, h1.bar > h2.baz > h3.qux {}" },
-    // { code: "span.foo {}" },
+    { code: "span.foo, h1.bar > h2.baz > h3.qux {}" },
+    { code: "span.foo {}" },
     { code: "div.foo {}" },
     { code: ".foo span {}" },
     { code: ".foo div {}" },
@@ -31,6 +31,18 @@ testRule({
       message: messages.unexpected("span"),
       line: 1,
       column: 53,
+    },
+    {
+      code: "div > .foo {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
+    },
+    {
+      code: "div  .foo {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
     },
     {
       code: "div:hover {}",

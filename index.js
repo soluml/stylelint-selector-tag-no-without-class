@@ -26,9 +26,18 @@ const rule = function (primaryOption) {
       const combinedSegments = selectorNode.split(
         (node) => node.type === "combinator"
       );
-      const startsWith = combinedSegments.flat(Infinity)[0];
+      const flattenedSegments = combinedSegments.flat(Infinity);
+      const startsWith = flattenedSegments[0];
 
-      if (startsWith.type === "tag") {
+      if (
+        (startsWith.type === "tag" && flattenedSegments.length === 1) ||
+        (startsWith.type === "tag" &&
+          _.get(flattenedSegments, "[1].type") === "combinator")
+      ) {
+        var fail = true;
+      }
+
+      if (fail) {
         stylelint.utils.report({
           ruleName: ruleName,
           result: result,
