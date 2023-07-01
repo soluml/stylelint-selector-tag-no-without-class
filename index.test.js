@@ -9,8 +9,7 @@ testRule({
   accept: [
     // { code: "span.foo, h1.bar > h2.baz > h3.qux {}" },
     // { code: "span.foo {}" },
-    // { code: "div.foo {}" },
-
+    { code: "div.foo {}" },
     { code: ".foo span {}" },
     { code: ".foo div {}" },
     { code: ".foo { > span {} }" },
