@@ -82,10 +82,19 @@ testRule({
 
 testRule({
   ruleName: ruleName,
-  config: ["/./"],
+  config: [],
 
   accept: [
-    // https://github.com/Moxio/stylelint-selector-tag-no-without-class/issues/5
+    { code: "div.foo {}" },
     { code: "@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }" },
+  ],
+
+  reject: [
+    {
+      code: "div {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
+    },
   ],
 });
