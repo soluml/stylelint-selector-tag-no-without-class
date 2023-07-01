@@ -50,12 +50,12 @@ testRule({
       line: 1,
       column: 11,
     },
-    // {
-    //   code: "div:hover {}",
-    //   message: messages.unexpected("div"),
-    //   line: 1,
-    //   column: 1,
-    // },
+    {
+      code: "div:hover {}",
+      message: messages.unexpected("div"),
+      line: 1,
+      column: 1,
+    },
     // {
     //   code: "div::before {}",
     //   message: messages.unexpected("div"),

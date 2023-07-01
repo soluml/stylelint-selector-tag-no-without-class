@@ -32,7 +32,9 @@ const rule = function (primaryOption) {
       if (
         (startsWith.type === "tag" && flattenedSegments.length === 1) ||
         (startsWith.type === "tag" &&
-          _.get(flattenedSegments, "[1].type") === "combinator")
+          _.get(flattenedSegments, "[1].type") === "combinator") ||
+        (startsWith.type === "tag" &&
+          _.get(flattenedSegments, "[1].type") === "pseudo")
       ) {
         var fail = true;
       }
