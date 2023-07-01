@@ -12,6 +12,7 @@ testRule({
     { code: ".foo span {}" },
     { code: ".foo div {}" },
     { code: ".foo { > span {} }" },
+    { code: ".foo { & span {} }" },
     { code: "span.foo, h1.bar > h2.baz > h3.qux {}" },
     {
       code: "@media(min-width: 30em) { @media(min-width: 40em) { .foo span {} } }",
