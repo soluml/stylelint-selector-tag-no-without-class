@@ -26,8 +26,6 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "jest-preset-stylelint": "^7.1.0",
     "stylelint": "^16.10.0",
     "stylelint-test-rule-node": "^0.3.0"
   },
