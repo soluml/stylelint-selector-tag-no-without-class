@@ -1,9 +1,9 @@
-const _ = require("lodash");
-const stylelint = require("stylelint");
-const isStandardSyntaxRule = require("stylelint/lib/utils/isStandardSyntaxRule");
-const isStandardSyntaxSelector = require("stylelint/lib/utils/isStandardSyntaxSelector");
-const parseSelector = require("stylelint/lib/utils/parseSelector");
-const matchesStringOrRegExp = require("stylelint/lib/utils/matchesStringOrRegExp");
+import { get, isString } from "lodash-es";
+import stylelint from "stylelint";
+import isStandardSyntaxRule from "./utils/isStandardSyntaxRule.mjs";
+import isStandardSyntaxSelector from "./utils/isStandardSyntaxSelector.mjs";
+import parseSelector from "stylelint/lib/utils/parseSelector.mjs";
+import matchesStringOrRegExp from "./utils/matchesStringOrRegExp.mjs";
 
 const ruleName = "plugin/selector-no-top-level-tag";
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -15,7 +15,7 @@ const rule = function (primaryOption) {
   return function (root, result) {
     let validOptions = stylelint.utils.validateOptions(result, ruleName, {
       actual: primaryOption,
-      possible: [_.isString],
+      possible: [isString],
     });
 
     if (!validOptions) {
@@ -32,9 +32,9 @@ const rule = function (primaryOption) {
       if (
         (startsWith.type === "tag" && flattenedSegments.length === 1) ||
         (startsWith.type === "tag" &&
-          _.get(flattenedSegments, "[1].type") === "combinator") ||
+          get(flattenedSegments, "[1].type") === "combinator") ||
         (startsWith.type === "tag" &&
-          _.get(flattenedSegments, "[1].type") === "pseudo")
+          get(flattenedSegments, "[1].type") === "pseudo")
       ) {
         var fail = !matchesStringOrRegExp(startsWith.value, primaryOption);
       }
@@ -96,4 +96,5 @@ const rule = function (primaryOption) {
 rule.primaryOptionArray = true;
 rule.ruleName = ruleName;
 rule.messages = messages;
-module.exports = stylelint.createPlugin(ruleName, rule);
+
+export default stylelint.createPlugin(ruleName, rule);

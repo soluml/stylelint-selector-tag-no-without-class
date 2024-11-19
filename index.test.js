@@ -1,8 +1,14 @@
+import plugin from "./index.js";
+import { testRule } from "stylelint-test-rule-node";
+
+const plugins = [plugin];
 const {
-  rule: { ruleName, messages },
-} = require(".");
+  ruleName,
+  rule: { messages },
+} = plugin;
 
 testRule({
+  plugins,
   ruleName: ruleName,
   config: ["b", "/^h[0-6]$/"],
 
@@ -81,6 +87,7 @@ testRule({
 });
 
 testRule({
+  plugins,
   ruleName: ruleName,
   config: [],
 
