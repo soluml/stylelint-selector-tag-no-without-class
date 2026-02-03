@@ -1,6 +1,6 @@
 {
   "name": "stylelint-selector-no-top-level-tag",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Styelint plugin to disallow tags as a top-level selector",
   "keywords": [
     "stylelint-plugin",
@@ -23,13 +23,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.23"
   },
   "devDependencies": {
-    "stylelint": "^16.10.0",
-    "stylelint-test-rule-node": "^0.3.0"
+    "stylelint": "^17.1.1",
+    "stylelint-test-rule-node": "^1.0.0"
   },
   "peerDependencies": {
-    "stylelint": ">= 9.x < 17"
+    "stylelint": ">= 9.x < 18"
   }
 }

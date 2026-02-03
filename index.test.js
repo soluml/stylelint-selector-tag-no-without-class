@@ -57,7 +57,7 @@ testRule({
       code: "span.foo, address {}",
       message: messages.unexpected("address"),
       line: 1,
-      column: 11,
+      column: 1,
     },
     {
       code: "div:hover {}",
